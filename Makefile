@@ -1,12 +1,12 @@
 .POSIX:
 
 .PHONY: serve
-serve: ## runs a local dev server
-	cd client; npm run serve
+serve: build ## runs a local dev server
+	docker run -p 8090:8080 acbilson/chaos-micropub-client
 
 .PHONY: build
 build: ## builds a version to be used for local testing in Nginx
-	cd client; npm run build
+	docker build -t acbilson/chaos-micropub-client .
 
 .PHONY: help
 help: ## show this help
